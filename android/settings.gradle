@@ -1,0 +1,3 @@
+rootProject.name = 'chipstacks_rn_1201'
+
+include ':app'
