@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "606566673594",
+    "firebase_url": "https://chipstacks-d1cc0.firebaseio.com",
+    "project_id": "chipstacks-d1cc0",
+    "storage_bucket": "chipstacks-d1cc0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:606566673594:android:921c6ea5fbfec81c",
+        "android_client_info": {
+          "package_name": "com.chipstacks.chipstacks"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "606566673594-opvgv2i5403bj95t1jqecjtvokufgkod.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhsn1-Usm_BzwmhBN9fP58ftZN5msbQ-s"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
