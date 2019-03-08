@@ -7,9 +7,9 @@ export default StyleSheet.create({
     alignItems: 'center'
   },
   logo: {
-    marginTop: 100,
+    marginTop: 50,
     width: dm.width * 0.6,
-    height: dm.width * 0.2
+    height: dm.width * 0.6
   },
   content: {
     flex: 1,

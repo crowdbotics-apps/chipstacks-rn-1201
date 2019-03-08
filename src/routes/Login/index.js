@@ -10,6 +10,10 @@ import { alert } from 'app/utils/Alert';
 import styles from './style';
 import LogoIcon from 'app/assets/images/logo.png';
 
+const emailRegEx =
+  // eslint-disable-next-line max-len
+  /^(([^<>()\\[\]\\.,;:\s@"]+(\.[^<>()\\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
 class LoginScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -36,6 +40,17 @@ class LoginScreen extends React.Component {
 
   login = async () => {
     let { email, password } = this.state;
+
+    if (!emailRegEx.test(email)) {
+      alert('Email is not valid!');
+      return;
+    }
+
+    if (password.length < 6) {
+      alert('Password is not valid!');
+      return;
+    }
+
     try {
       this.context.showLoading();
       let user = await AuthController.login({
