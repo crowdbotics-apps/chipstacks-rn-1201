@@ -2,17 +2,14 @@ import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 
-// import { AuthController } from 'app/controllers';
+import { AuthController } from 'app/controllers';
 import { alert } from 'app/utils/Alert';
-
+import Colors from '../../theme/Colors';
 class DrawerMenu extends Component {
   menuItemPressed = (index) => async () => {
     switch (index) {
       case 0:
         this.props.navigation.navigate('profile');
-        break;
-      case 1:
-        this.props.navigation.navigate('help');
         break;
       default:
         try {
@@ -35,12 +32,6 @@ class DrawerMenu extends Component {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.menuItem}
-          onPress={this.menuItemPressed(1)}
-        >
-          <Text style={styles.menuText}> Help </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.menuItem}
           onPress={this.menuItemPressed(2)}
         >
           <Text style={styles.menuText}> Log Out </Text>
@@ -55,7 +46,7 @@ let styles = StyleSheet.create({
     flex: 1,
     paddingTop: 50,
     paddingLeft: 20,
-    backgroundColor: '#81A8D2'
+    backgroundColor: Colors.ButtonColor
   },
   menuItem: {
     marginBottom: 20

@@ -109,7 +109,7 @@ class SignupScreen extends React.Component {
   };
 
   termsPressed = () => {
-    let url = 'https://www.sociallensresearch.com/privacy-policy';
+    let url = 'https://www.google.com';
     Linking.canOpenURL(url)
       .then((supported) => {
         if (!supported) {
@@ -174,7 +174,7 @@ class SignupScreen extends React.Component {
               disabled={!this.state.agreeTerms}
               containerStyle={styles.signupBtn}
               textStyle={styles.signup}
-              text="Sign Up"
+              text="Register Me"
               onPress={this.signup}
             />
             <View style={styles.loginContainer}>
@@ -194,7 +194,8 @@ class SignupScreen extends React.Component {
   renderVerifcation = () => {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}> Please verify your email first.</Text>
+        <Image source={LogoIcon} style={styles.logo} resizeMode="contain" />
+        <Text style={styles.title}> We sent verification email.</Text>
         <Button
           containerStyle={styles.resendBtn}
           textStyle={styles.resend}

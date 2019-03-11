@@ -11,10 +11,10 @@ const signup = async (payload) => {
     );
     await user.user.sendEmailVerification({
       ios: {
-        bundleId: 'com.crowdbotics.sociallensresearch'
+        bundleId: 'com.chipstacks.chipstacks'
       },
       android: {
-        packageName: 'com.crowdbotics.sociallensresearch'
+        packageName: 'com.chipstacks.chipstacks'
       }
     });
     await user.user.updateProfile({
@@ -43,10 +43,10 @@ const sendEmailVerification = async () => {
   try {
     auth.currentUser.sendEmailVerification({
       ios: {
-        bundleId: 'com.crowdbotics.sociallensresearch'
+        bundleId: 'com.chipstacks.chipstacks'
       },
       android: {
-        packageName: 'com.crowdbotics.sociallensresearch'
+        packageName: 'com.chipstacks.chipstacks'
       }
     });
   } catch (error) {

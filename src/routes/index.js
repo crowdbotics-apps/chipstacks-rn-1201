@@ -15,9 +15,7 @@ import ForgotPasswordScreen from './PasswordReset';
 import SignupScreen from './Signup';
 import ProfileScreen from './Profile';
 import HelpScreen from './Help';
-import ContestScreen from './Contest';
-import ContestDetailsScreen from './ContestDetails';
-import RewardScreen from './Reward';
+import MainScreen from './Main';
 
 import { DrawerMenu } from './../components';
 
@@ -43,8 +41,7 @@ const AuthNavigator = createStackNavigator(
 
 const MainTabNavigator = createBottomTabNavigator(
   {
-    contests: ContestScreen,
-    rewards: RewardScreen
+    main: MainScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -109,8 +106,7 @@ const MainNavigator = createDrawerNavigator(
 
 const MainStackNavigator = createStackNavigator(
   {
-    mainroot: MainNavigator,
-    contestdetails: ContestDetailsScreen
+    mainroot: MainNavigator
   },
   {
     headerMode: 'none',

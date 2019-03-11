@@ -47,7 +47,7 @@ class LoginScreen extends React.Component {
     }
 
     if (password.length < 6) {
-      alert('Password is not valid!');
+      alert('Password should be longer than 6 letters!');
       return;
     }
 

@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
+import Colors from '../../theme/Colors';
 
 const dm = Dimensions.get('screen');
 export default StyleSheet.create({
@@ -52,7 +53,7 @@ export default StyleSheet.create({
     width: 150,
     height: 50,
     borderRadius: 25,
-    backgroundColor: '#81A8D2'
+    backgroundColor: Colors.ButtonColor
   },
   signup: {
     fontSize: 18,
