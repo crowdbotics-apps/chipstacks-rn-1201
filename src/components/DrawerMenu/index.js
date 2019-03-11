@@ -11,6 +11,9 @@ class DrawerMenu extends Component {
       case 0:
         this.props.navigation.navigate('profile');
         break;
+      case 1:
+        this.props.navigation.navigate('bank');
+        break;
       default:
         try {
           await AuthController.logout();
@@ -29,6 +32,12 @@ class DrawerMenu extends Component {
           onPress={this.menuItemPressed(0)}
         >
           <Text style={styles.menuText}> Profile </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.menuItem}
+          onPress={this.menuItemPressed(1)}
+        >
+          <Text style={styles.menuText}> Bank Account </Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.menuItem}
