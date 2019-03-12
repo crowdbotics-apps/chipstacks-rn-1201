@@ -49,7 +49,6 @@ export default StyleSheet.create({
   },
   signupBtn: {
     marginTop: 20,
-    marginBottom: 10,
     width: 150,
     height: 50,
     borderRadius: 25,
@@ -63,7 +62,8 @@ export default StyleSheet.create({
   loginContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 20
+    marginTop: 20,
+    marginBottom: 20
   },
   description: {
     fontSize: 16
@@ -81,8 +81,13 @@ export default StyleSheet.create({
     marginTop: 20,
     marginBottom: 20
   },
-  resend: {
+  resendActive: {
     fontSize: 16,
     textDecorationLine: 'underline'
+  },
+  resendInactive: {
+    fontSize: 16,
+    textDecorationLine: 'underline',
+    color: '#cccccc'
   }
 });
