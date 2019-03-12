@@ -17,6 +17,7 @@ import { alert } from 'app/utils/Alert';
 
 import styles from './style';
 import LogoIcon from 'app/assets/images/logo.png';
+import { ToS_URL } from '../../constant';
 
 const emailRegEx =
   // eslint-disable-next-line max-len
@@ -32,6 +33,7 @@ class SignupScreen extends React.Component {
       password: '',
       confirmpswd: '',
       agreeTerms: false,
+      resendEmail: false,
       step: 1
     };
   }
@@ -49,7 +51,7 @@ class SignupScreen extends React.Component {
   };
 
   validate = () => {
-    let { name, email, password, confirmpswd } = this.state;
+    let { name, email, password, confirmpswd, agreeTerms } = this.state;
     if (!name) {
       alert("Name can't be empty!");
       return false;
@@ -72,6 +74,10 @@ class SignupScreen extends React.Component {
     }
     if (password.length < 6) {
       alert('Password should be longer than 6 letters!');
+      return false;
+    }
+    if (!agreeTerms) {
+      alert('To register, you have to agree our Terms of Conditions.');
       return false;
     }
     return true;
@@ -108,6 +114,7 @@ class SignupScreen extends React.Component {
     try {
       this.context.showLoading();
       await AuthController.sendEmailVerification();
+      success(`Verification email was resent to ${this.state.email}`);
       this.context.hideLoading();
     } catch (error) {
       this.context.hideLoading();
@@ -116,13 +123,12 @@ class SignupScreen extends React.Component {
   };
 
   termsPressed = () => {
-    let url = 'https://www.google.com';
-    Linking.canOpenURL(url)
+    Linking.canOpenURL(ToS_URL)
       .then((supported) => {
         if (!supported) {
-          console.log("Can't handle url: " + url);
+          console.log("Can't handle url: " + ToS_URL);
         } else {
-          return Linking.openURL(url);
+          return Linking.openURL(ToS_URL);
         }
       })
       .catch((err) => console.error('An error occurred', err));
@@ -130,8 +136,8 @@ class SignupScreen extends React.Component {
 
   renderSignup = () => {
     return (
-      <KeyboardAwareScrollView contentContainerStyle={styles.container}>
-        <ScrollView>
+      <ScrollView>
+        <KeyboardAwareScrollView contentContainerStyle={styles.container}>
           <View style={styles.content}>
             <Image source={LogoIcon} style={styles.logo} resizeMode="contain" />
             <View style={styles.content}>
@@ -181,7 +187,7 @@ class SignupScreen extends React.Component {
                 />
               </View>
               <Button
-                disabled={!this.state.agreeTerms}
+                // disabled={!this.state.agreeTerms}
                 containerStyle={styles.signupBtn}
                 textStyle={styles.signup}
                 text="Register Me"
@@ -199,8 +205,8 @@ class SignupScreen extends React.Component {
               </View>
             </View>
           </View>
-        </ScrollView>
-      </KeyboardAwareScrollView>
+        </KeyboardAwareScrollView>
+      </ScrollView>
     );
   };
 
@@ -210,6 +216,7 @@ class SignupScreen extends React.Component {
         <Image source={LogoIcon} style={styles.logo} resizeMode="contain" />
         <Text style={styles.title}> We sent verification email.</Text>
         <Button
+          disabled={!this.state.resendEmail}
           containerStyle={styles.resendBtn}
           textStyle={styles.resend}
           text="Resend verification email"

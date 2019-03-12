@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Image, TextInput, Text } from 'react-native';
+import { View, Image, TextInput, Text, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
@@ -72,49 +72,51 @@ class LoginScreen extends React.Component {
 
   render() {
     return (
-      <KeyboardAwareScrollView contentContainerStyle={styles.container}>
-        <View style={styles.container}>
-          <Image source={LogoIcon} style={styles.logo} resizeMode="contain" />
-          <View style={styles.content}>
-            <TextInput
-              style={styles.input}
-              placeholder="Email"
-              value={this.state.email}
-              autoCapitalize="none"
-              onChangeText={(value) => this.inputChanged('email', value)}
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="Password"
-              value={this.state.password}
-              autoCapitalize="none"
-              secureTextEntry={true}
-              onChangeText={(value) => this.inputChanged('password', value)}
-            />
-            <Button
-              containerStyle={styles.loginBtn}
-              textStyle={styles.login}
-              text="Log In"
-              onPress={this.login}
-            />
-            <Button
-              containerStyle={styles.forgotpswdBtn}
-              textStyle={styles.forgotpswd}
-              text="Forgot password?"
-              onPress={this.goToForgotpswd}
-            />
-            <View style={styles.signupContainer}>
-              <Text style={styles.description}>Do not have an account? </Text>
-              <Button
-                containerStyle={styles.signupBtn}
-                textStyle={styles.signup}
-                text="Sign Up"
-                onPress={this.goToSignUp}
+      <ScrollView>
+        <KeyboardAwareScrollView contentContainerStyle={styles.container}>
+          <View style={styles.container}>
+            <Image source={LogoIcon} style={styles.logo} resizeMode="contain" />
+            <View style={styles.content}>
+              <TextInput
+                style={styles.input}
+                placeholder="Email"
+                value={this.state.email}
+                autoCapitalize="none"
+                onChangeText={(value) => this.inputChanged('email', value)}
               />
+              <TextInput
+                style={styles.input}
+                placeholder="Password"
+                value={this.state.password}
+                autoCapitalize="none"
+                secureTextEntry={true}
+                onChangeText={(value) => this.inputChanged('password', value)}
+              />
+              <Button
+                containerStyle={styles.loginBtn}
+                textStyle={styles.login}
+                text="Log In"
+                onPress={this.login}
+              />
+              <Button
+                containerStyle={styles.forgotpswdBtn}
+                textStyle={styles.forgotpswd}
+                text="Forgot password?"
+                onPress={this.goToForgotpswd}
+              />
+              <View style={styles.signupContainer}>
+                <Text style={styles.description}>Do not have an account? </Text>
+                <Button
+                  containerStyle={styles.signupBtn}
+                  textStyle={styles.signup}
+                  text="Sign Up"
+                  onPress={this.goToSignUp}
+                />
+              </View>
             </View>
           </View>
-        </View>
-      </KeyboardAwareScrollView>
+        </KeyboardAwareScrollView>
+      </ScrollView>
     );
   }
 }
