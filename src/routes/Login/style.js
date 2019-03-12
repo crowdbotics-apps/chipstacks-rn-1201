@@ -41,7 +41,7 @@ export default StyleSheet.create({
     color: '#fff'
   },
   forgotpswdBtn: {
-    marginTop: 20
+    marginTop: 25
   },
   forgotpswd: {
     fontSize: 16,
@@ -51,7 +51,7 @@ export default StyleSheet.create({
   signupContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 30
+    marginTop: 20
   },
   description: {
     fontSize: 16
