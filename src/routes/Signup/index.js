@@ -1,5 +1,12 @@
 import React from 'react';
-import { View, Image, TextInput, Text, Linking } from 'react-native';
+import {
+  View,
+  Image,
+  TextInput,
+  Text,
+  Linking,
+  ScrollView
+} from 'react-native';
 import PropTypes from 'prop-types';
 import { CheckBox } from 'react-native-elements';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
@@ -124,69 +131,75 @@ class SignupScreen extends React.Component {
   renderSignup = () => {
     return (
       <KeyboardAwareScrollView contentContainerStyle={styles.container}>
-        <View style={styles.container}>
-          <Image source={LogoIcon} style={styles.logo} resizeMode="contain" />
+        <ScrollView>
           <View style={styles.content}>
-            <TextInput
-              style={styles.input}
-              placeholder="Name *"
-              value={this.state.name}
-              autoCapitalize="none"
-              onChangeText={(value) => this.inputChanged('name', value)}
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="Email *"
-              value={this.state.email}
-              autoCapitalize="none"
-              onChangeText={(value) => this.inputChanged('email', value)}
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="Password *"
-              value={this.state.password}
-              autoCapitalize="none"
-              onChangeText={(value) => this.inputChanged('password', value)}
-              secureTextEntry={true}
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="Confirm Password *"
-              value={this.state.confirmpswd}
-              autoCapitalize="none"
-              onChangeText={(value) => this.inputChanged('confirmpswd', value)}
-              secureTextEntry={true}
-            />
-            <View style={styles.termsContainer}>
-              <CheckBox
-                containerStyle={styles.checkbox}
-                checked={this.state.agreeTerms}
-                onIconPress={this.agreeTerms}
+            <Image source={LogoIcon} style={styles.logo} resizeMode="contain" />
+            <View style={styles.content}>
+              <TextInput
+                style={styles.input}
+                placeholder="Name *"
+                value={this.state.name}
+                autoCapitalize="none"
+                onChangeText={(value) => this.inputChanged('name', value)}
               />
-              <Text style={styles.terms}>{'Agree to '}</Text>
+              <TextInput
+                style={styles.input}
+                placeholder="Email *"
+                value={this.state.email}
+                autoCapitalize="none"
+                onChangeText={(value) => this.inputChanged('email', value)}
+              />
+              <TextInput
+                style={styles.input}
+                placeholder="Password *"
+                value={this.state.password}
+                autoCapitalize="none"
+                onChangeText={(value) => this.inputChanged('password', value)}
+                secureTextEntry={true}
+              />
+              <TextInput
+                style={styles.input}
+                placeholder="Confirm Password *"
+                value={this.state.confirmpswd}
+                autoCapitalize="none"
+                onChangeText={(value) =>
+                  this.inputChanged('confirmpswd', value)
+                }
+                secureTextEntry={true}
+              />
+              <View style={styles.termsContainer}>
+                <CheckBox
+                  containerStyle={styles.checkbox}
+                  checked={this.state.agreeTerms}
+                  onIconPress={this.agreeTerms}
+                />
+                <Text style={styles.terms}>{'Agree to '}</Text>
+                <Button
+                  textStyle={styles.termsBtnText}
+                  text="Terms and Conditions"
+                  onPress={this.termsPressed}
+                />
+              </View>
               <Button
-                textStyle={styles.termsBtnText}
-                text="Terms and Conditions"
-                onPress={this.termsPressed}
+                disabled={!this.state.agreeTerms}
+                containerStyle={styles.signupBtn}
+                textStyle={styles.signup}
+                text="Register Me"
+                onPress={this.signup}
               />
-            </View>
-            <Button
-              disabled={!this.state.agreeTerms}
-              containerStyle={styles.signupBtn}
-              textStyle={styles.signup}
-              text="Register Me"
-              onPress={this.signup}
-            />
-            <View style={styles.loginContainer}>
-              <Text style={styles.description}>Already have an account? </Text>
-              <Button
-                textStyle={styles.login}
-                text="Log In"
-                onPress={this.goToLogin}
-              />
+              <View style={styles.loginContainer}>
+                <Text style={styles.description}>
+                  Already have an account?{' '}
+                </Text>
+                <Button
+                  textStyle={styles.login}
+                  text="Log In"
+                  onPress={this.goToLogin}
+                />
+              </View>
             </View>
           </View>
-        </View>
+        </ScrollView>
       </KeyboardAwareScrollView>
     );
   };
