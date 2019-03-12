@@ -14,7 +14,7 @@ import LoginScreen from './Login';
 import ForgotPasswordScreen from './PasswordReset';
 import SignupScreen from './Signup';
 import ProfileScreen from './Profile';
-import HelpScreen from './Help';
+import BankAccountScreen from './BankAccount';
 import MainScreen from './Main';
 
 import { DrawerMenu } from './../components';
@@ -81,7 +81,7 @@ const MainNavigator = createDrawerNavigator(
   {
     home: MainTabNavigator,
     profile: ProfileScreen,
-    help: HelpScreen
+    bank: BankAccountScreen
   },
   {
     drawerWidth: dm.width * 0.75,
