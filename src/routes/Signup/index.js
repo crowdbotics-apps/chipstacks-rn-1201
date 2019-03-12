@@ -13,7 +13,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 
 import { AppContext, Button } from 'app/components';
 import { AuthController } from 'app/controllers';
-import { alert } from 'app/utils/Alert';
+import { alert, success } from 'app/utils/Alert';
 
 import styles from './style';
 import LogoIcon from 'app/assets/images/logo.png';
@@ -33,7 +33,7 @@ class SignupScreen extends React.Component {
       password: '',
       confirmpswd: '',
       agreeTerms: false,
-      resendEmail: false,
+      allowResendEmail: true,
       step: 1
     };
   }
@@ -97,9 +97,13 @@ class SignupScreen extends React.Component {
         password
       });
       this.context.hideLoading();
-      this.setState({
-        step: 2
+      await this.setState({
+        step: 2,
+        allowResendEmail: false
       });
+      setTimeout(() => {
+        this.setState({ allowResendEmail: true });
+      }, 30000);
     } catch (error) {
       this.context.hideLoading();
       alert(error.message);
@@ -116,6 +120,10 @@ class SignupScreen extends React.Component {
       await AuthController.sendEmailVerification();
       success(`Verification email was resent to ${this.state.email}`);
       this.context.hideLoading();
+      await this.setState({ allowResendEmail: false });
+      setTimeout(() => {
+        this.setState({ allowResendEmail: true });
+      }, 30000);
     } catch (error) {
       this.context.hideLoading();
       alert(error.message);
@@ -216,9 +224,13 @@ class SignupScreen extends React.Component {
         <Image source={LogoIcon} style={styles.logo} resizeMode="contain" />
         <Text style={styles.title}> We sent verification email.</Text>
         <Button
-          disabled={!this.state.resendEmail}
+          disabled={!this.state.allowResendEmail}
           containerStyle={styles.resendBtn}
-          textStyle={styles.resend}
+          textStyle={
+            this.state.allowResendEmail
+              ? styles.resendActive
+              : styles.resendInactive
+          }
           text="Resend verification email"
           onPress={this.resendVerification}
         />

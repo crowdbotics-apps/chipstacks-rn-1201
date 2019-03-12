@@ -81,8 +81,13 @@ export default StyleSheet.create({
     marginTop: 20,
     marginBottom: 20
   },
-  resend: {
+  resendActive: {
     fontSize: 16,
     textDecorationLine: 'underline'
+  },
+  resendInactive: {
+    fontSize: 16,
+    textDecorationLine: 'underline',
+    color: '#cccccc'
   }
 });
