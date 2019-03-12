@@ -84,7 +84,7 @@ const MainNavigator = createDrawerNavigator(
     bank: BankAccountScreen
   },
   {
-    drawerWidth: dm.width * 0.75,
+    drawerWidth: dm.width * 0.6,
     // eslint-disable-next-line react/display-name
     contentComponent: (props) => (
       <DrawerMenu currentScreen={props.navigation.state.routeName} {...props} />

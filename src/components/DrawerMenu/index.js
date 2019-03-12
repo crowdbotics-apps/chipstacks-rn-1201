@@ -55,14 +55,14 @@ let styles = StyleSheet.create({
     flex: 1,
     paddingTop: 50,
     paddingLeft: 20,
-    backgroundColor: Colors.ButtonColor
+    backgroundColor: Colors.DrawerColor
   },
   menuItem: {
     marginBottom: 20
   },
   menuText: {
     fontSize: 18,
-    color: '#fff'
+    color: Colors.MenuColor
   }
 });
 
