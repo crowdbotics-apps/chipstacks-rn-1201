@@ -15,24 +15,36 @@ class ProfileScreen extends Component {
     super(props);
 
     this.state = {
-      displayName: '',
+      firstName: '',
+      lastName: '',
       email: '',
       password: '',
       confirmpswd: ''
     };
 
-    this.props.navigation.addListener('didFocus', this.onFocus);
+    // this.props.navigation.addListener('didFocus', this.onFocus);
   }
 
-  onFocus = (payload) => {
-    let curUser = firebase.auth().currentUser;
+  async componentDidMount() {
+    const user = await AuthController.me();
     this.setState({
-      displayName: curUser.displayName,
-      email: curUser.email,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
       password: '',
       confirmpswd: ''
     });
-  };
+  }
+
+  // onFocus = (payload) => {
+  //   let curUser = firebase.auth().currentUser;
+  //   this.setState({
+  //     firstName: curUser.displayName,
+  //     email: curUser.email,
+  //     password: '',
+  //     confirmpswd: ''
+  //   });
+  // };
 
   leftHandler = () => {
     this.props.navigation.goBack();
@@ -45,7 +57,8 @@ class ProfileScreen extends Component {
     try {
       this.context.showLoading();
       await AuthController.updateUser({
-        displayName: this.state.displayName,
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
         password: this.state.password
       });
       this.context.hideLoading();
@@ -57,9 +70,9 @@ class ProfileScreen extends Component {
   };
 
   validate = () => {
-    let { displayName, password, confirmpswd } = this.state;
-    if (!displayName) {
-      alert("Name can't be empty!");
+    let { firstName, password, confirmpswd } = this.state;
+    if (!firstName) {
+      alert("First Name can't be empty!");
       return false;
     }
     if ((!password && confirmpswd) || (password && !confirmpswd)) {
@@ -94,14 +107,25 @@ class ProfileScreen extends Component {
           />
           <View style={styles.content}>
             <View style={styles.item}>
-              <Text style={styles.label}>Name</Text>
+              <Text style={styles.label}>First Name</Text>
               <TextInput
                 style={styles.input}
-                placeholder="Type name here"
+                placeholder="Type first name here"
                 autoFocus={true}
                 autoCapitalize="none"
-                value={this.state.displayName}
-                onChangeText={this.inputChanged('displayName')}
+                value={this.state.firstName}
+                onChangeText={this.inputChanged('firstName')}
+              />
+            </View>
+            <View style={styles.item}>
+              <Text style={styles.label}>Last Name</Text>
+              <TextInput
+                style={styles.input}
+                placeholder="Type last name here"
+                autoFocus={true}
+                autoCapitalize="none"
+                value={this.state.lastName}
+                onChangeText={this.inputChanged('lastName')}
               />
             </View>
             <View style={styles.item}>

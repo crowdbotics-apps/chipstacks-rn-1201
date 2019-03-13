@@ -28,7 +28,8 @@ class SignupScreen extends React.Component {
     super(props);
 
     this.state = {
-      name: '',
+      firstName: '',
+      lastName: '',
       email: '',
       password: '',
       confirmpswd: '',
@@ -51,9 +52,16 @@ class SignupScreen extends React.Component {
   };
 
   validate = () => {
-    let { name, email, password, confirmpswd, agreeTerms } = this.state;
-    if (!name) {
-      alert("Name can't be empty!");
+    let {
+      firstName,
+      lastName,
+      email,
+      password,
+      confirmpswd,
+      agreeTerms
+    } = this.state;
+    if (!firstName) {
+      alert("First Name can't be empty!");
       return false;
     }
     if (!email) {
@@ -88,11 +96,12 @@ class SignupScreen extends React.Component {
     if (!this.validate()) {
       return;
     }
-    let { name, email, password } = this.state;
+    let { firstName, lastName, email, password } = this.state;
     try {
       this.context.showLoading();
       let user = await AuthController.signup({
-        name,
+        firstName,
+        lastName,
         email,
         password
       });
@@ -151,10 +160,17 @@ class SignupScreen extends React.Component {
             <View style={styles.content}>
               <TextInput
                 style={styles.input}
-                placeholder="Name *"
-                value={this.state.name}
+                placeholder="First Name *"
+                value={this.state.firstName}
                 autoCapitalize="none"
-                onChangeText={(value) => this.inputChanged('name', value)}
+                onChangeText={(value) => this.inputChanged('firstName', value)}
+              />
+              <TextInput
+                style={styles.input}
+                placeholder="Last Name "
+                value={this.state.lastName}
+                autoCapitalize="none"
+                onChangeText={(value) => this.inputChanged('lastName', value)}
               />
               <TextInput
                 style={styles.input}

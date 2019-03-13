@@ -18,7 +18,7 @@ const signup = async (payload) => {
       }
     });
     await user.user.updateProfile({
-      displayName: payload.name
+      displayName: payload.firstName + payload.lastName
     });
     let ref = store.collection('users').doc(user.user.uid);
     await store.runTransaction(async (transaction) => {
@@ -27,7 +27,8 @@ const signup = async (payload) => {
       if (!doc.exists) {
         transaction.set(ref, {
           id: user.user.uid,
-          name: payload.name,
+          firstName: payload.firstName,
+          lastName: payload.lastName,
           email: payload.email
         });
       }
@@ -72,10 +73,10 @@ const logout = async () => {
   }
 };
 
-const updateUser = async ({ displayName, password }) => {
+const updateUser = async ({ firstName, lastName, password }) => {
   try {
     await auth.currentUser.updateProfile({
-      displayName: displayName
+      displayName: firstName + lastName
     });
     if (password) {
       await auth.currentUser.updatePassword(password);
@@ -83,7 +84,8 @@ const updateUser = async ({ displayName, password }) => {
 
     let ref = store.collection('users').doc(auth.currentUser.uid);
     await ref.update({
-      name: displayName
+      firstName: firstName,
+      lastName: lastName
     });
   } catch (error) {
     throw error;
@@ -98,11 +100,25 @@ const forgotPassword = async (email) => {
   }
 };
 
+const me = async () => {
+  try {
+    let userDoc = await store
+      .collection('users')
+      .doc(auth.currentUser.uid)
+      .get();
+    const user = await userDoc.data();
+    return user;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export default {
   signup,
   login,
   logout,
   updateUser,
   sendEmailVerification,
-  forgotPassword
+  forgotPassword,
+  me
 };
