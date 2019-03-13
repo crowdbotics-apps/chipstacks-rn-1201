@@ -26,14 +26,16 @@ class ProfileScreen extends Component {
   }
 
   async componentDidMount() {
+    this.context.showLoading();
     const user = await AuthController.me();
-    this.setState({
+    await this.setState({
       firstName: user.firstName,
       lastName: user.lastName,
       email: user.email,
       password: '',
       confirmpswd: ''
     });
+    this.context.hideLoading();
   }
 
   // onFocus = (payload) => {
@@ -111,7 +113,7 @@ class ProfileScreen extends Component {
               <TextInput
                 style={styles.input}
                 placeholder="Type first name here"
-                autoFocus={true}
+                // autoFocus={true}
                 autoCapitalize="none"
                 value={this.state.firstName}
                 onChangeText={this.inputChanged('firstName')}
@@ -122,7 +124,7 @@ class ProfileScreen extends Component {
               <TextInput
                 style={styles.input}
                 placeholder="Type last name here"
-                autoFocus={true}
+                // autoFocus={true}
                 autoCapitalize="none"
                 value={this.state.lastName}
                 onChangeText={this.inputChanged('lastName')}
