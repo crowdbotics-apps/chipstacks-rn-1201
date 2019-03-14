@@ -18,7 +18,7 @@ const signup = async (payload) => {
       }
     });
     await user.user.updateProfile({
-      displayName: payload.firstName + payload.lastName
+      displayName: `${payload.firstName} ${payload.lastName}`
     });
     let ref = store.collection('users').doc(user.user.uid);
     await store.runTransaction(async (transaction) => {
@@ -76,7 +76,7 @@ const logout = async () => {
 const updateUser = async ({ firstName, lastName, password }) => {
   try {
     await auth.currentUser.updateProfile({
-      displayName: firstName + lastName
+      displayName: `${firstName} ${lastName}`
     });
     if (password) {
       await auth.currentUser.updatePassword(password);
