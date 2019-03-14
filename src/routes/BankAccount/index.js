@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import PlaidAuthenticator from 'react-native-plaid-link';
 import { AppContext, Navbar } from 'app/components';
 import { PLAID_PUBLIC_KEY, PLAID_ENV, PLAID_PRODUCT } from 'app/constant';
+import { AuthController } from 'app/controllers';
 import styles from './style';
 
 class BankAccountScreen extends Component {
@@ -11,9 +12,22 @@ class BankAccountScreen extends Component {
     super(props);
 
     this.state = {
-      data: {}
+      data: {},
+      firstName: '',
+      lastName: ''
     };
   }
+
+  async componentDidMount() {
+    this.context.showLoading();
+    const user = await AuthController.me();
+    await this.setState({
+      firstName: user.firstName,
+      lastName: user.lastName
+    });
+    this.context.hideLoading();
+  }
+
   leftHandler = () => {
     this.props.navigation.goBack();
   };
@@ -30,7 +44,7 @@ class BankAccountScreen extends Component {
         publicKey={PLAID_PUBLIC_KEY}
         env={PLAID_ENV}
         product={PLAID_PRODUCT}
-        clientName="Catalin Miron"
+        clientName={`${this.state.firstName} ${this.state.lastName}`}
         selectAccount={true}
       />
     );
