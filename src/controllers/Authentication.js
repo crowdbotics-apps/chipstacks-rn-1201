@@ -23,7 +23,7 @@ const signup = async (payload) => {
     let ref = store.collection('users').doc(user.user.uid);
     await store.runTransaction(async (transaction) => {
       const doc = await transaction.get(ref);
-
+      let timeStamp = new Date();
       if (!doc.exists) {
         transaction.set(ref, {
           id: user.user.uid,
@@ -31,7 +31,7 @@ const signup = async (payload) => {
           lastName: payload.lastName,
           email: payload.email,
           active: true,
-          createdAt: new Date()
+          createdAt: timeStamp.getTime()
         });
       }
       return user;

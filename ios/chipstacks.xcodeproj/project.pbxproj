@@ -399,6 +399,7 @@
 		2D02E4901E0B4A5D006451C7 /* chipstacks-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "chipstacks-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E732368A74D432F8967C128 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		333056BA5B7ADABE709DF4A1 /* libPods-chipstacks.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-chipstacks.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A50BD92223E3CE200FAA56B /* chipstacks.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = chipstacks.entitlements; path = chipstacks/chipstacks.entitlements; sourceTree = "<group>"; };
 		3A518A382232B7790070A610 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 		3A5291E422319FDE00997857 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3A5292BB2232B04F00997857 /* RNGestureHandler.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNGestureHandler.xcodeproj; path = "../node_modules/react-native-gesture-handler/ios/RNGestureHandler.xcodeproj"; sourceTree = "<group>"; };
@@ -563,6 +564,7 @@
 		13B07FAE1A68108700A75B9A /* chipstacks */ = {
 			isa = PBXGroup;
 			children = (
+				3A50BD92223E3CE200FAA56B /* chipstacks.entitlements */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -854,6 +856,11 @@
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = 6YKR59QXKM;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1501,6 +1508,7 @@
 			baseConfigurationReference = 4031C5D3468A6410BB4016B9 /* Pods-chipstacks.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = chipstacks/chipstacks.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1531,6 +1539,7 @@
 			baseConfigurationReference = B7AFA8AA9A1CFD17320E9074 /* Pods-chipstacks.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = chipstacks/chipstacks.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
