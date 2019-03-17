@@ -29,7 +29,9 @@ const signup = async (payload) => {
           id: user.user.uid,
           firstName: payload.firstName,
           lastName: payload.lastName,
-          email: payload.email
+          email: payload.email,
+          active: true,
+          createdAt: new Date()
         });
       }
       return user;
