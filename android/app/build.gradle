@@ -120,6 +120,16 @@ android {
     // because of firestore:
     multiDexEnabled true
   }
+  signingConfigs {
+    release {
+      if (project.hasProperty('MYAPP_RELEASE_STORE_FILE')) {
+        storeFile file(MYAPP_RELEASE_STORE_FILE)
+        storePassword MYAPP_RELEASE_STORE_PASSWORD
+        keyAlias MYAPP_RELEASE_KEY_ALIAS
+        keyPassword MYAPP_RELEASE_KEY_PASSWORD
+      }
+    }
+  }
   splits {
     abi {
       reset()
@@ -132,6 +142,7 @@ android {
     release {
       minifyEnabled enableProguardInReleaseBuilds
       proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+      signingConfig signingConfigs.release
     }
     debug {
       minifyEnabled false
@@ -154,20 +165,24 @@ android {
 }
 
 dependencies {
-    implementation project(':react-native-vector-icons')
-    implementation project(':react-native-gesture-handler')
-    implementation project(':react-native-firebase')
+  implementation 'com.android.support:multidex:1.0.3'
+  implementation 'com.android.support:design:27.1.0'
+
+  implementation project(':react-native-gesture-handler')
+  implementation project(':react-native-firebase')
+  implementation project(':react-native-fast-image')
+  implementation project(':react-native-vector-icons')
 
   //noinspection GradleDynamicVersion
   implementation 'com.facebook.react:react-native:+'
   implementation fileTree(include: ['*.jar'], dir: 'libs')
-
+ implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
   /* ----------------------------
        *    REACT NATIVE FIREBASE
        * ---------------------------- */
 
   // Library as defined in settings.gradle
-  implementation project(path: ':react-native-firebase', configuration: 'default')
+  // implementation project(path: ':react-native-firebase', configuration: 'default')
 
   // Required dependencies
 
@@ -241,3 +256,5 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 apply plugin: 'com.google.gms.google-services'
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+com.google.gms.googleservices.GoogleServicesPlugin.config.disableVersionCheck = true
