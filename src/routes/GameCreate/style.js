@@ -4,25 +4,16 @@ import Colors from '../../theme/Colors';
 const dm = Dimensions.get('screen');
 export default StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center'
-  },
-  logo: {
-    marginTop: 50,
-    width: dm.width * 0.6,
-    height: dm.width * 0.6
+    flex: 1
   },
   content: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
+    flex: 1
   },
   input: {
-    width: dm.width * 0.8,
-    height: 50,
+    width: dm.width * 0.3,
+    height: 40,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: '#ddd',
-    borderRadius: 10,
+    borderColor: '#000',
     backgroundColor: '#fff',
     paddingHorizontal: 10,
     fontSize: 16,
@@ -31,11 +22,18 @@ export default StyleSheet.create({
   title: {
     marginTop: 50,
     width: '100%',
-    height: 50
+    height: 50,
+    alignItems: 'center'
   },
   titleText: {
     fontSize: 18,
     fontWeight: '600',
     color: '#000000'
+  },
+  rowContent: {
+    flexDirection: 'row'
+  },
+  column: {
+    flex: 1
   }
 });
