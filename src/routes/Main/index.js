@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { View, Dimensions } from 'react-native';
+import { View, Dimensions, Text } from 'react-native';
 import PropTypes from 'prop-types';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { AppContext, Button, Navbar } from 'app/components';
 
-let dm = Dimensions.get('screen');
-
-import { AppContext, Navbar } from 'app/components';
+const dm = Dimensions.get('screen');
 
 import styles from './style';
 
@@ -37,6 +37,15 @@ class MainScreen extends Component {
           leftHandler={this.leftHandler}
           title="Dashboard"
         />
+        <View style={styles.buttonContainer}>
+          <Button
+            containerStyle={styles.signupBtn}
+            textStyle={styles.signup}
+            text="Host Game"
+            icon="plus"
+            onPress={this.goToSignUp}
+          />
+        </View>
       </View>
     );
   }
