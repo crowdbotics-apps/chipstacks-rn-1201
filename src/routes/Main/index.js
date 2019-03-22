@@ -29,6 +29,10 @@ class MainScreen extends Component {
     this.props.navigation.toggleDrawer();
   };
 
+  goToGameCreate = () => {
+    this.props.navigation.navigate('gamecreate');
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -43,7 +47,7 @@ class MainScreen extends Component {
             textStyle={styles.signup}
             text="Host Game"
             icon="plus"
-            onPress={this.goToSignUp}
+            onPress={this.goToGameCreate}
           />
         </View>
       </View>

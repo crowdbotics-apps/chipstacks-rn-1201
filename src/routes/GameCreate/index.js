@@ -11,7 +11,6 @@ import { AppContext, Button } from 'app/components';
 import { alert } from 'app/utils/Alert';
 
 import styles from './style';
-import LogoIcon from 'app/assets/images/logo.png';
 
 class GameCreateScreen extends React.Component {
   constructor(props) {
@@ -69,42 +68,9 @@ class GameCreateScreen extends React.Component {
       <ScrollView>
         <KeyboardAwareScrollView contentContainerStyle={styles.container}>
           <View style={styles.container}>
-            <Image source={LogoIcon} style={styles.logo} resizeMode="contain" />
-            <View style={styles.content}>
-              <TextInput
-                style={styles.input}
-                placeholder="Email"
-                value={this.state.email}
-                autoCapitalize="none"
-                onChangeText={(value) => this.inputChanged('email', value)}
-              />
-              <TextInput
-                style={styles.input}
-                placeholder="Password"
-                value={this.state.password}
-                autoCapitalize="none"
-                secureTextEntry={true}
-                onChangeText={(value) => this.inputChanged('password', value)}
-              />
-              <Button
-                containerStyle={styles.loginBtn}
-                textStyle={styles.login}
-                text="Log In"
-                onPress={this.login}
-              />
-              <Button
-                containerStyle={styles.forgotpswdBtn}
-                textStyle={styles.forgotpswd}
-                text="Forgot password?"
-                onPress={this.goToForgotpswd}
-              />
-              <View style={styles.signupContainer}>
-                <Text style={styles.description}>Do not have an account? </Text>
-                <Button
-                  textStyle={styles.signup}
-                  text="Sign Up"
-                  onPress={this.goToSignUp}
-                />
+            <View style={styles.newGame}>
+              <View style={styles.title}>
+                <Text style={styles.titleText}>Create New Game</Text>
               </View>
             </View>
           </View>

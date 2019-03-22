@@ -28,36 +28,14 @@ export default StyleSheet.create({
     fontSize: 16,
     marginBottom: 20
   },
-  loginBtn: {
+  title: {
     marginTop: 50,
-    width: 150,
-    height: 50,
-    borderRadius: 25,
-    backgroundColor: Colors.ButtonColor
+    width: '100%',
+    height: 50
   },
-  login: {
+  titleText: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#fff'
-  },
-  forgotpswdBtn: {
-    marginTop: 25
-  },
-  forgotpswd: {
-    fontSize: 16,
-    fontWeight: '600',
-    textDecorationLine: 'underline'
-  },
-  signupContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: 20
-  },
-  description: {
-    fontSize: 16
-  },
-  signup: {
-    fontSize: 18,
-    fontWeight: '600'
+    color: '#000000'
   }
 });
