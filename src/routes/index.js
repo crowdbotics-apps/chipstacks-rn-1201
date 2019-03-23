@@ -16,6 +16,7 @@ import SignupScreen from './Signup';
 import ProfileScreen from './Profile';
 import BankAccountScreen from './BankAccount';
 import MainScreen from './Main';
+import GameCreateScreen from './GameCreate';
 
 import { DrawerMenu } from './../components';
 
@@ -39,41 +40,18 @@ const AuthNavigator = createStackNavigator(
   }
 );
 
-const MainTabNavigator = createBottomTabNavigator(
+const MainTabNavigator = createStackNavigator(
   {
-    main: MainScreen
+    main: {
+      screen: MainScreen
+    },
+    gamecreate: {
+      screen: GameCreateScreen
+    }
   },
   {
-    defaultNavigationOptions: ({ navigation }) => ({
-      // eslint-disable-next-line react/display-name
-      tabBarIcon: ({ focused, horizontal, tintColor }) => {
-        const { routeName } = navigation.state;
-        let iconName;
-        if (routeName === 'contests') {
-          iconName = 'ios-copy';
-        } else if (routeName === 'rewards') {
-          iconName = 'ios-trophy';
-        }
-        return <Ionicons name={iconName} size={25} color={tintColor} />;
-      },
-      // eslint-disable-next-line react/display-name
-      tabBarLabel: ({ focused, tintColor }) => {
-        const { routeName } = navigation.state;
-        let tabLabel,
-          fontSize = 12;
-        if (routeName === 'contests') {
-          tabLabel = 'Contests';
-        } else if (routeName === 'rewards') {
-          tabLabel = 'Rewards';
-        }
-        return <Text style={{ color: tintColor, fontSize }}>{tabLabel}</Text>;
-      }
-    }),
-    tabBarOptions: {
-      activeTintColor: '#81A8D2',
-      inactiveTintColor: 'gray',
-      safeAreaInset: { bottom: 'never' }
-    }
+    headerMode: 'none',
+    initialRouteName: 'main'
   }
 );
 

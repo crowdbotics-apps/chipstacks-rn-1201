@@ -1,3 +1,5 @@
 import AuthController from './Authentication';
+import GameController from './GameController';
+import UserController from './UserController';
 
-export { AuthController };
+export { AuthController, GameController, UserController };
