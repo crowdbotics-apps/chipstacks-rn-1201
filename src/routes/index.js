@@ -51,7 +51,7 @@ const MainTabNavigator = createStackNavigator(
   },
   {
     headerMode: 'none',
-    initialRouteName: 'gamecreate'
+    initialRouteName: 'main'
   }
 );
 
