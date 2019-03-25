@@ -42,6 +42,13 @@ class MainScreen extends Component {
           rightHandler={this.rightHandler}
           title="Dashboard"
         />
+        <View style={styles.top}>
+          <View style={styles.balance} />
+          <View style={styles.history} />
+        </View>
+        <View style={styles.bottom}>
+          <View style={styles.list} />
+        </View>
         <View style={styles.buttonContainer}>
           <Button
             containerStyle={styles.signupBtn}

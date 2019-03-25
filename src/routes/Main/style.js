@@ -9,6 +9,23 @@ export default StyleSheet.create({
   content: {
     flex: 1
   },
+  top: {
+    width: dm.width * 0.9,
+    height: dm.height * 0.15,
+    margin: dm.width * 0.05,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: 'red'
+  },
+  balance: {
+    backgroundColor: 'blue',
+    width: dm.width * 0.43
+  },
+  history: {
+    backgroundColor: 'green',
+    width: dm.width * 0.43
+  },
+  bottom: {},
   buttonContainer: {
     marginTop: 20,
     paddingHorizontal: 20,
