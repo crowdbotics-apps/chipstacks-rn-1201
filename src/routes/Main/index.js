@@ -25,7 +25,7 @@ class MainScreen extends Component {
     this.context.hideLoading();
   };
 
-  leftHandler = () => {
+  rightHandler = () => {
     this.props.navigation.toggleDrawer();
   };
 
@@ -37,8 +37,9 @@ class MainScreen extends Component {
     return (
       <View style={styles.container}>
         <Navbar
-          left="ios-menu"
-          leftHandler={this.leftHandler}
+          right="ios-settings"
+          left="ios-notifications"
+          rightHandler={this.rightHandler}
           title="Dashboard"
         />
         <View style={styles.buttonContainer}>

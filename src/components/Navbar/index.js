@@ -20,7 +20,7 @@ class Navbar extends Component {
         <View style={styles.rightContainer}>
           {right && (
             <TouchableOpacity style={styles.btn} onPress={rightHandler}>
-              <Text style={styles.right}>{right}</Text>
+              <Ionicons name={right} style={styles.right} size={24} />
             </TouchableOpacity>
           )}
         </View>
@@ -60,8 +60,7 @@ let styles = StyleSheet.create({
     alignItems: 'flex-end'
   },
   right: {
-    fontSize: 14,
-    fontWeight: '600'
+    fontSize: 22
   }
 });
 

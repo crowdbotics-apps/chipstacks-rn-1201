@@ -63,6 +63,7 @@ const MainNavigator = createDrawerNavigator(
   },
   {
     drawerWidth: dm.width * 0.6,
+    drawerPosition: 'right',
     // eslint-disable-next-line react/display-name
     contentComponent: (props) => (
       <DrawerMenu currentScreen={props.navigation.state.routeName} {...props} />
