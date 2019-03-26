@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import ThemeStyle from '../../theme/ThemeStyle';
 
 class Navbar extends Component {
   render() {
@@ -31,7 +32,7 @@ class Navbar extends Component {
 
 let styles = StyleSheet.create({
   container: {
-    height: 44,
+    height: ThemeStyle.NavbarHeight,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#ddd',
     flexDirection: 'row',

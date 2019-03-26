@@ -43,5 +43,12 @@ export default StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     color: '#fff'
+  },
+  logo: {
+    flex: 1,
+    alignSelf: 'center',
+    justifyContent: 'center',
+    width: dm.width * 0.6,
+    height: dm.width * 0.6
   }
 });

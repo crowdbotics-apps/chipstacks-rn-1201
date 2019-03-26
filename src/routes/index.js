@@ -7,7 +7,6 @@ import {
   createAppContainer
 } from 'react-navigation';
 import { Text, Dimensions } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import LoadingScreen from './Loading';
 import LoginScreen from './Login';

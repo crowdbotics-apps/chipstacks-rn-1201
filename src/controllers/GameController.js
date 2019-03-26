@@ -1,4 +1,5 @@
 import firebase from 'react-native-firebase';
+import { UserController } from 'app/controllers';
 
 const Auth = firebase.auth();
 const Firestore = firebase.firestore();
@@ -23,7 +24,7 @@ const getGameById = async (gameId) => {
   try {
     let snapshot = await gameCollection.doc(gameId).get();
     let game = await snapshot.data();
-    const admin = await UsersController.getUserById(game.admin);
+    const admin = await UserController.getUserById(game.admin);
     game.admin = admin;
     return game;
   } catch (error) {
