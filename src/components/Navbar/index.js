@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { Avatar } from 'react-native-elements';
 import ThemeStyle from '../../theme/ThemeStyle';
 
 class Navbar extends Component {
@@ -17,7 +18,15 @@ class Navbar extends Component {
             </TouchableOpacity>
           )}
         </View>
-        <Text style={styles.title}>{title}</Text>
+        <Avatar
+          rounded
+          title={title}
+          style={styles.avatar}
+          source={{
+            uri:
+              'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg'
+          }}
+        />
         <View style={styles.rightContainer}>
           {right && (
             <TouchableOpacity style={styles.btn} onPress={rightHandler}>
@@ -50,11 +59,11 @@ let styles = StyleSheet.create({
   left: {
     fontSize: 22
   },
-  title: {
-    flex: 1,
-    fontSize: 20,
-    fontWeight: '600',
-    textAlign: 'center'
+  avatar: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    justifyContent: 'center'
   },
   rightContainer: {
     width: 60,
