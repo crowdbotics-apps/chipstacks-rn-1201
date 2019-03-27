@@ -37,7 +37,7 @@ const addGame = async (payload) => {
     const uid = Auth.currentUser.uid;
     let gameId;
     let timeStamp = new Date();
-
+    console.log(payload.players);
     await Firestore.collection('games')
       .add({
         buyin: payload.buyin,
@@ -47,6 +47,10 @@ const addGame = async (payload) => {
         active: payload.active || true,
         admin: uid,
         players: payload.players,
+        date: payload.date,
+        time: payload.time,
+        place: payload.place || '',
+        status: 0, // not started; 1 - started; 2 - finished
         createdAt: timeStamp.getTime()
       })
       .then((docRef) => {

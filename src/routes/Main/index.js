@@ -3,6 +3,7 @@ import { View, Dimensions, Text, Image, FlatList } from 'react-native';
 import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Avatar } from 'react-native-elements';
+import moment from 'moment';
 import { AppContext, Button, Navbar } from 'app/components';
 import { GameController } from 'app/controllers';
 
@@ -55,9 +56,11 @@ class MainScreen extends Component {
         />
         <View style={styles.listRight}>
           <Text style={styles.itemText}>
-            {item.admin.firstName + ' ' + item.admin.lastName}
-            is invited you to play 5/10 Dealer choice at {item.place}{' '}
-            {item.createdAt}
+            {`${item.admin.firstName} ${
+              item.admin.lastName
+            } is invited you to play 5/10 Dealer choice at ${
+              item.place
+            } The Country Club ${item.date} ${item.time}`}
           </Text>
         </View>
       </View>
@@ -75,34 +78,38 @@ class MainScreen extends Component {
           title="Dashboard"
         />
 
-        {games.length === 0 ? (
-          <Image source={LogoIcon} style={styles.logo} resizeMode="contain" />
-        ) : (
-          <View style={styles.container}>
-            <View style={styles.top}>
-              <View style={styles.balance} />
-              <View style={styles.history} />
+        <View style={styles.container}>
+          <View style={styles.top}>
+            <View style={styles.balance}>
+              <Text>Balance</Text>
             </View>
-            <View style={styles.bottom}>
-              <View style={styles.list} />
+            <View style={styles.history}>
+              <Text>History</Text>
             </View>
-            <View style={styles.buttonContainer}>
-              <Button
-                containerStyle={styles.signupBtn}
-                textStyle={styles.signup}
-                text="Host Game"
-                icon="plus"
-                onPress={this.goToGameCreate}
-              />
-            </View>
+          </View>
+          <View style={styles.bottom}>
+            <View style={styles.list} />
+          </View>
+          <View style={styles.buttonContainer}>
+            <Button
+              containerStyle={styles.signupBtn}
+              textStyle={styles.signup}
+              text="Host Game"
+              icon="plus"
+              onPress={this.goToGameCreate}
+            />
+          </View>
+          {games.length === 0 ? (
+            <Image source={LogoIcon} style={styles.logo} resizeMode="contain" />
+          ) : (
             <View style={styles.gameList}>
               <FlatList
                 data={games}
                 renderItem={({ item }) => this.renderGameRow(item)}
               />
             </View>
-          </View>
-        )}
+          )}
+        </View>
       </View>
     );
   }

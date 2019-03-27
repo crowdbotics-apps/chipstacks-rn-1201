@@ -15,23 +15,24 @@ export default StyleSheet.create({
     height: dm.height * 0.15,
     margin: ThemeStyle.ContainerPadding,
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    backgroundColor: 'red'
+    justifyContent: 'space-between'
   },
   balance: {
-    backgroundColor: 'blue',
-    width: dm.width * 0.43
+    width: dm.width * 0.43,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   history: {
-    backgroundColor: 'green',
-    width: dm.width * 0.43
+    width: dm.width * 0.43,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   bottom: {},
   buttonContainer: {
     marginTop: 20,
     paddingHorizontal: 10,
     height: 40,
-    alignSelf: 'center'
+    alignItems: 'center'
   },
   item_button: {
     marginTop: 20,
@@ -76,5 +77,6 @@ export default StyleSheet.create({
     textAlign: 'center',
     justifyContent: 'center',
     alignSelf: 'center'
-  }
+  },
+  topText: {}
 });

@@ -64,14 +64,21 @@ class GameCreateScreen extends React.Component {
 
   onSelectedItemsChange = async (selectedItems) => {
     this.setState({ selectedItems });
+    console.log(this.state.selectedItems);
     let players = [];
     selectedItems &&
       selectedItems.length !== 0 &&
-      (await selectedItems.map((item) => {
-        players.push(this.state.items[item]);
+      (await selectedItems.map(async (item) => {
+        await this.state.items.map(async (user) => {
+          if (user.userId === item) {
+            user.status = 0; // invited; 1 - accepted
+            players.push(user);
+          }
+        });
       }));
 
     await this.setState({ players });
+    console.log(players);
   };
 
   inputChanged = (type, value) => {
@@ -112,7 +119,7 @@ class GameCreateScreen extends React.Component {
       const data = await this.state;
       await GameController.addGame(data);
 
-      this.props.navigation.goBack();
+      this.props.navigation.navigate('main');
 
       this.context.hideLoading();
     } catch (error) {
