@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View, Dimensions, Text, Image } from 'react-native';
+import { View, Dimensions, Text, Image, FlatList } from 'react-native';
 import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { Avatar } from 'react-native-elements';
 import { AppContext, Button, Navbar } from 'app/components';
 import { GameController } from 'app/controllers';
 
@@ -39,6 +40,30 @@ class MainScreen extends Component {
     this.props.navigation.navigate('gamecreate');
   };
 
+  renderGameRow(item) {
+    console.log(item);
+    return (
+      <View style={styles.listItem} key={item.id}>
+        <Avatar
+          rounded
+          title={item.name}
+          style={styles.avatar}
+          source={{
+            uri:
+              'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg'
+          }}
+        />
+        <View style={styles.listRight}>
+          <Text style={styles.itemText}>
+            {item.admin.firstName + ' ' + item.admin.lastName}
+            is invited you to play 5/10 Dealer choice at {item.place}{' '}
+            {item.createdAt}
+          </Text>
+        </View>
+      </View>
+    );
+  }
+
   render() {
     const { games } = this.state;
     return (
@@ -68,6 +93,12 @@ class MainScreen extends Component {
                 text="Host Game"
                 icon="plus"
                 onPress={this.goToGameCreate}
+              />
+            </View>
+            <View style={styles.gameList}>
+              <FlatList
+                data={games}
+                renderItem={({ item }) => this.renderGameRow(item)}
               />
             </View>
           </View>

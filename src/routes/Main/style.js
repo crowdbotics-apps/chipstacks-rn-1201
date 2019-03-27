@@ -1,4 +1,5 @@
 import { Dimensions, StyleSheet } from 'react-native';
+import ThemeStyle from '../../theme/ThemeStyle';
 
 let dm = Dimensions.get('screen');
 
@@ -12,7 +13,7 @@ export default StyleSheet.create({
   top: {
     width: dm.width * 0.9,
     height: dm.height * 0.15,
-    margin: dm.width * 0.05,
+    margin: ThemeStyle.ContainerPadding,
     flexDirection: 'row',
     justifyContent: 'space-between',
     backgroundColor: 'red'
@@ -28,7 +29,7 @@ export default StyleSheet.create({
   bottom: {},
   buttonContainer: {
     marginTop: 20,
-    paddingHorizontal: 20,
+    paddingHorizontal: 10,
     height: 40,
     alignSelf: 'center'
   },
@@ -50,5 +51,30 @@ export default StyleSheet.create({
     justifyContent: 'center',
     width: dm.width * 0.6,
     height: dm.width * 0.6
+  },
+  gameList: {
+    padding: ThemeStyle.ContainerPadding
+  },
+  listItem: {
+    height: 100,
+    borderBottomColor: '#ccc',
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: '#ddd',
+    flexDirection: 'row'
+  },
+  avatar: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    margin: 25,
+    justifyContent: 'center'
+  },
+  listRight: {
+    width: dm.width * 0.8 - 100
+  },
+  itemText: {
+    textAlign: 'center',
+    justifyContent: 'center',
+    alignSelf: 'center'
   }
 });
