@@ -1,5 +1,6 @@
 import { Dimensions, StyleSheet } from 'react-native';
 import ThemeStyle from '../../theme/ThemeStyle';
+import Colors from '../../theme/Colors';
 
 let dm = Dimensions.get('screen');
 
@@ -78,5 +79,33 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignSelf: 'center'
   },
-  topText: {}
+  acceptContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  acceptBtn: {
+    marginLeft: 10,
+    width: 70,
+    height: 20,
+    borderRadius: 10,
+    backgroundColor: Colors.ButtonColor
+  },
+  accept: {
+    fontSize: 12,
+    fontWeight: '600',
+    color: '#fff'
+  },
+  declineBtn: {
+    marginRight: 10,
+    width: 70,
+    height: 20,
+    borderRadius: 10,
+    backgroundColor: 'red'
+  },
+  decline: {
+    fontSize: 12,
+    fontWeight: '600',
+    color: '#000'
+  }
 });

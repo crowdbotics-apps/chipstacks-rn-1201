@@ -62,6 +62,20 @@ class MainScreen extends Component {
               item.place
             } The Country Club ${item.date} ${item.time}`}
           </Text>
+          <View style={styles.acceptContainer}>
+            <Button
+              containerStyle={styles.acceptBtn}
+              textStyle={styles.accept}
+              text="Accept"
+              onPress={this.accept}
+            />
+            <Button
+              containerStyle={styles.declineBtn}
+              textStyle={styles.decline}
+              text="Decline"
+              onPress={this.decline}
+            />
+          </View>
         </View>
       </View>
     );
@@ -81,10 +95,10 @@ class MainScreen extends Component {
         <View style={styles.container}>
           <View style={styles.top}>
             <View style={styles.balance}>
-              <Text>Balance</Text>
+              <Text style={styles.topText}>Balance</Text>
             </View>
             <View style={styles.history}>
-              <Text>History</Text>
+              <Text style={styles.topText}>History</Text>
             </View>
           </View>
           <View style={styles.bottom}>
