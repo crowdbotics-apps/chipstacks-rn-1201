@@ -37,7 +37,6 @@ const addGame = async (payload) => {
     const uid = Auth.currentUser.uid;
     let gameId;
     let timeStamp = new Date();
-    console.log(payload.players);
     await Firestore.collection('games')
       .add({
         buyin: payload.buyin,
@@ -83,8 +82,74 @@ const addGame = async (payload) => {
   }
 };
 
+const acceptGame = async (payload) => {
+  let timeStamp = new Date();
+  try {
+    const uid = Auth.currentUser.uid;
+    await payload.players.map(async (player) => {
+      if (player.userId === uid) {
+        player.status = 1; //accepted
+      }
+    });
+
+    await Firestore.collection('games')
+      .doc(payload.id)
+      .set(
+        {
+          players: payload.players
+        },
+        { merge: true }
+      );
+
+    await Firestore.collection('notifications').add({
+      type: 'accept',
+      status: 0, //unread
+      sender: uid,
+      receiver: payload.admin,
+      gameId: payload.id,
+      createdAt: timeStamp.getTime()
+    });
+  } catch (error) {
+    throw error;
+  }
+};
+
+const declineGame = async (payload) => {
+  let timeStamp = new Date();
+  try {
+    const uid = Auth.currentUser.uid;
+    await payload.players.map(async (player, key) => {
+      if (player.userId === uid) {
+        delete payload.players[key];
+      }
+    });
+
+    await Firestore.collection('games')
+      .doc(payload.id)
+      .set(
+        {
+          players: payload.players
+        },
+        { merge: true }
+      );
+
+    await Firestore.collection('notifications').add({
+      type: 'decline',
+      status: 0, //unread
+      sender: uid,
+      receiver: payload.admin,
+      gameId: payload.id,
+      createdAt: timeStamp.getTime()
+    });
+  } catch (error) {
+    throw error;
+  }
+};
+
 export default {
   getGameById,
   getGames,
-  addGame
+  addGame,
+  acceptGame,
+  declineGame
 };

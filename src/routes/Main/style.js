@@ -72,7 +72,8 @@ export default StyleSheet.create({
     justifyContent: 'center'
   },
   listRight: {
-    width: dm.width * 0.8 - 100
+    width: dm.width * 0.8 - 100,
+    marginTop: 4
   },
   itemText: {
     textAlign: 'center',
