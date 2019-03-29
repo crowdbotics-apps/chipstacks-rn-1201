@@ -7,7 +7,6 @@ import {
   createAppContainer
 } from 'react-navigation';
 import { Text, Dimensions } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import LoadingScreen from './Loading';
 import LoginScreen from './Login';
@@ -63,6 +62,7 @@ const MainNavigator = createDrawerNavigator(
   },
   {
     drawerWidth: dm.width * 0.6,
+    drawerPosition: 'right',
     // eslint-disable-next-line react/display-name
     contentComponent: (props) => (
       <DrawerMenu currentScreen={props.navigation.state.routeName} {...props} />
