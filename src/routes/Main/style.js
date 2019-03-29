@@ -21,12 +21,14 @@ export default StyleSheet.create({
   balance: {
     width: dm.width * 0.43,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: 'green'
   },
   history: {
     width: dm.width * 0.43,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: 'green'
   },
   bottom: {},
   buttonContainer: {
@@ -68,12 +70,25 @@ export default StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 25,
-    margin: 25,
-    justifyContent: 'center'
+    marginLeft: 25,
+    marginRight: 25,
+    justifyContent: 'center',
+    alignSelf: 'center'
   },
   listRight: {
     width: dm.width * 0.8 - 100,
-    marginTop: 4
+    justifyContent: 'center',
+    alignSelf: 'center'
+  },
+  listCenter: {
+    width: dm.width * 0.7 - 100,
+    justifyContent: 'center',
+    alignSelf: 'center'
+  },
+  listCenterRight: {
+    width: dm.width * 0.2,
+    justifyContent: 'center',
+    alignSelf: 'center'
   },
   itemText: {
     textAlign: 'center',

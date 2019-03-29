@@ -146,10 +146,44 @@ const declineGame = async (payload) => {
   }
 };
 
+const startGame = async (payload) => {
+  let timeStamp = new Date();
+  try {
+    await Firestore.collection('games')
+      .doc(payload.id)
+      .set(
+        {
+          status: 'started'
+        },
+        { merge: true }
+      );
+  } catch (error) {
+    throw error;
+  }
+};
+
+const endGame = async (payload) => {
+  let timeStamp = new Date();
+  try {
+    await Firestore.collection('games')
+      .doc(payload.id)
+      .set(
+        {
+          status: 'finished'
+        },
+        { merge: true }
+      );
+  } catch (error) {
+    throw error;
+  }
+};
+
 export default {
   getGameById,
   getGames,
   addGame,
   acceptGame,
-  declineGame
+  declineGame,
+  startGame,
+  endGame
 };
