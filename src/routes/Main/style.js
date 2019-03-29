@@ -78,7 +78,8 @@ export default StyleSheet.create({
   listRight: {
     width: dm.width * 0.8 - 100,
     justifyContent: 'center',
-    alignSelf: 'center'
+    alignSelf: 'center',
+    marginTop: 25
   },
   listCenter: {
     width: dm.width * 0.7 - 100,
@@ -105,7 +106,9 @@ export default StyleSheet.create({
     width: 70,
     height: 20,
     borderRadius: 10,
-    backgroundColor: Colors.ButtonColor
+    backgroundColor: Colors.ButtonColor,
+    justifyContent: 'center',
+    alignSelf: 'center'
   },
   accept: {
     fontSize: 12,
@@ -117,7 +120,9 @@ export default StyleSheet.create({
     width: 70,
     height: 20,
     borderRadius: 10,
-    backgroundColor: 'red'
+    backgroundColor: 'red',
+    justifyContent: 'center',
+    alignSelf: 'center'
   },
   decline: {
     fontSize: 12,

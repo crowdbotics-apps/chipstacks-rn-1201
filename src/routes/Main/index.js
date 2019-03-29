@@ -159,9 +159,9 @@ class MainScreen extends Component {
           />
           <View style={styles.listCenter}>
             <Text style={styles.itemText}>
-              {`Currnet session: \n 5/10 Dealer choice at ${
-                item.place
-              } The Country Club \n session: ${item.date} ${item.time}`}
+              {`Currnet session: \n ${item.name} \n session: ${item.date} ${
+                item.time
+              }`}
             </Text>
             <View style={styles.acceptContainer}>
               <Button
@@ -190,9 +190,7 @@ class MainScreen extends Component {
             }}
           />
           <View style={styles.listCenter}>
-            <Text style={styles.itemText}>
-              {`5/10 Dealer choice at ${item.place} The Country Club`}
-            </Text>
+            <Text style={styles.itemText}>{`${item.name}`}</Text>
           </View>
           <View style={styles.listCenterRight}>
             <Text style={styles.itemText}>${item.balance}</Text>
@@ -213,9 +211,7 @@ class MainScreen extends Component {
           />
           <View style={styles.listCenter}>
             <Text style={styles.itemText}>
-              {`5/10 Dealer choice at ${
-                item.place
-              } The Country Club \n Start Date: ${item.date} ${item.time}`}
+              {`${item.name} \n Start Date: ${item.date} ${item.time}`}
             </Text>
           </View>
         </View>
@@ -236,9 +232,9 @@ class MainScreen extends Component {
             <Text style={styles.itemText}>
               {`${item.admin.firstName} ${
                 item.admin.lastName
-              } is invited you to play 5/10 Dealer choice at ${
-                item.place
-              } The Country Club ${item.date} ${item.time}`}
+              } has invited you to play ${item.name} on ${item.date} ${
+                item.time
+              }`}
             </Text>
             <View style={styles.acceptContainer}>
               <Button
@@ -275,11 +271,7 @@ class MainScreen extends Component {
           />
           <View style={styles.listRight}>
             <Text style={styles.itemText}>
-              {`${item.admin.firstName} ${
-                item.admin.lastName
-              } is invited you to play 5/10 Dealer choice at ${
-                item.place
-              } The Country Club ${item.date} ${item.time}`}
+              {`${item.name} on ${item.date} ${item.time}`}
             </Text>
             <View style={styles.acceptContainer}>
               <Button
@@ -306,11 +298,7 @@ class MainScreen extends Component {
           />
           <View style={styles.listRight}>
             <Text style={styles.itemText}>
-              {`${item.admin.firstName} ${
-                item.admin.lastName
-              } is invited you to play 5/10 Dealer choice at ${
-                item.place
-              } The Country Club ${item.date} ${item.time}`}
+              {`${item.name} on ${item.date} ${item.time}`}
             </Text>
             <View style={styles.acceptContainer}>
               <Button

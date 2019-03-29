@@ -4,6 +4,7 @@ import { StyleSheet, SafeAreaView } from 'react-native';
 import AppNavigator from 'app/routes';
 import { AppContext, LoadingView } from 'app/components';
 
+console.disableYellowBox = true;
 export default class App extends React.Component {
   constructor(props) {
     super(props);

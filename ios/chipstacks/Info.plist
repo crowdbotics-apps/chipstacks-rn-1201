@@ -19,11 +19,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.1.6</string>
+	<string>0.2.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>7</string>
+	<string>11</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -55,8 +55,10 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Chipstacks wants user location data</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>Chipstacks wants user location data</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>
